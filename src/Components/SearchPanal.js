@@ -1,6 +1,6 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
-import './App.css'
+import * as BooksAPI from '../BooksAPI'
+import '../App.css'
 import BooksGrid from './BooksGrid'
 import { Link } from 'react-router-dom'
 
@@ -12,7 +12,7 @@ class SearchPanal extends React.Component{
 
   searchBooks(query){
     BooksAPI.search(query).then((result) => {
-      if (result && result.lengeth !== 0) {this.setState({books:result})}
+      if (Array.isArray(result)) {this.setState({books:result})}
     })
   }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css'
+import '../App.css'
 import BookMoveSelect from './BookMoveSelect'
 
 
@@ -17,11 +17,9 @@ import BookMoveSelect from './BookMoveSelect'
 // }
 
 class BooksGrid extends React.Component {
-
 	render() {
 		return (
 			<ol className="books-grid">
-
 			{
 
 				this.props.bookList.map((item) => (
@@ -30,7 +28,7 @@ class BooksGrid extends React.Component {
 					<div className="book-top">
 					<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: "url(" + item.imageLinks.thumbnail + ")" }}></div>
 						<div className="book-shelf-changer">
-							<BookMoveSelect allBooks = {this.props.allBooks} bookObj = {item}/>
+							<BookMoveSelect bookObj = {item}/>
 						</div>
 					</div>
 					<div className="book-title">{item.title}</div>
@@ -39,7 +37,6 @@ class BooksGrid extends React.Component {
 					</li>		
 				))	
 			}
-
 			</ol>
 		)
 	}
