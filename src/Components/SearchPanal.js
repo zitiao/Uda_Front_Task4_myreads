@@ -12,7 +12,15 @@ class SearchPanal extends React.Component{
 
   searchBooks(query){
     BooksAPI.search(query).then((result) => {
-      if (Array.isArray(result)) {this.setState({books:result})}
+      if (Array.isArray(result)) {
+        this.setState((prevState,props) => {
+          result.map(function(search_book){
+            let shelfInfo = props.allBooks.find((b) => b.id === search_book.id);
+            search_book.shelf = shelfInfo?shelfInfo.shelf:'none';      
+          })
+          return {books:result};
+        })
+      }
     })
   }
 
@@ -26,7 +34,7 @@ class SearchPanal extends React.Component{
               </div>
             </div>
             <div className="search-books-results">
-              <BooksGrid bookList = {this.state.books}/>
+              <BooksGrid bookList = {this.state.books} changeShelf = {this.props.changeShelf}/>
             </div>
           </div>      
     )

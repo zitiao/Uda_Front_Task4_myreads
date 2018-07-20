@@ -18,7 +18,7 @@ class BookList extends React.Component {
 		                		<div className="bookshelf" key  = {s}>
 		                          <h2 className="bookshelf-title">{s}</h2>
 		                          <div className="bookshelf-books">
-		                            <BooksGrid bookList = {this.props.allBooks.filter((b) => (b.shelf === s))} shelfName = {s}/>
+		                            <BooksGrid changeShelf = {this.props.changeShelf} bookList = {this.props.allBooks.filter((b) => (b.shelf === s))} shelfName = {s}/>
 		                          </div>
 		                        </div>
 	            			))

@@ -20,15 +20,26 @@ class BooksApp extends React.Component {
     componentDidMount() {
         BooksAPI.getAll().then((result) => this.setState({allBooks: result}))
     } 
-    componentDidUpdate (){
-        BooksAPI.getAll().then((result) => this.setState({allBooks: result}))
+    // componentDidUpdate (){
+    //     BooksAPI.getAll().then((result) => this.setState({allBooks: result}))
+    // }
+
+    changeShelf(bookObj,newShelf){
+        
+        this.setState((prevState,props) => {
+                prevState.allBooks.map((book) => {
+                    if (book.id === bookObj.id) book.shelf = newShelf;
+                })
+                return {allBooks:prevState.allBooks};
+        })
     }
+
     render() {
         return (
 
           <div className="app">
-            <Route exact path = '/search' render = {() => (<SearchPanal />)}/>
-            <Route exact path = '/' render = {() => (<BookList shelf = {this.state.shelf} allBooks = {this.state.allBooks}/>)} />
+            <Route exact path = '/search' render = {() => (<SearchPanal allBooks = {this.state.allBooks} changeShelf = {this.changeShelf.bind(this)}/>)}/>
+            <Route exact path = '/' render = {() => (<BookList shelf = {this.state.shelf} allBooks = {this.state.allBooks} changeShelf = {this.changeShelf.bind(this)}/>)} />
           </div>
         )
     }
