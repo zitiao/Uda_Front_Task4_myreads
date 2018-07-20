@@ -12,7 +12,7 @@ class BooksGrid extends React.Component {
 					<li key = {item.id}>
 					<div className="book">
 					<div className="book-top">
-					<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${item.imageLinks.thumbnail?item.imageLinks.thumbnail:'https://books.google.com/googlebooks/images/no_cover_thumb.gif'})` }}></div>
+					<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${item.imageLinks?item.imageLinks.thumbnail:'https://books.google.com/googlebooks/images/no_cover_thumb.gif'})` }}></div>
 						<div className="book-shelf-changer">
 							<BookMoveSelect changeShelf = {this.props.changeShelf} bookObj = {item}/>
 						</div>
